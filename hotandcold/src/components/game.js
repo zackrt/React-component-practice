@@ -6,9 +6,14 @@ import StatusSection from './status-section';
 import InfoSection from './info-section';
 import './game.css'
 
-export default function Game(props) {
+export default class Game extends React.Component {
+    constructor(props) {
+        super(props);
+
+    }
+
     return (
-        <section >
+        <section>
             <h1>Hot And Cold</h1>
             <form className="gameform">
                 <h2 className="feedback">Make your Guess!</h2>
@@ -17,6 +22,13 @@ export default function Game(props) {
                 <button className="Guess">
                     GUESS
                 </button>
+                <p>
+                    Guess #
+                    <span>
+                        
+                    </span>
+                    !
+                </p>
 
             </form>
         </section>
