@@ -68,20 +68,20 @@ render() {
     return (
         <div>
             <Header
-                onRestartGame={() => this.restartGame()}
-                onGenerateAuralUpdate={() => this.generateAuralUpdate()}
+            onRestartGame={() => this.restartGame()}
+            onGenerateAuralUpdate={() => this.generateAuralUpdate()}
             />
-            <main role="main">
-                <GuessSection  
+                <main role="main">
+                <GuessSection
                     feedback={feedback}
                     guessCount={guessCount}
-                    onMakeGuess={guess => this.makeGuess(guess)
+                    onMakeGuess={guess => this.makeGuess(guess)}
                 />
-                <StatusSection guesses={guesses}
-                  auralStatus={auralStatus}
-                  />
-                  <InfoSection />
-            </main>
+                    <StatusSection guesses={guesses} 
+                        auralStatus={auralStatus}
+                    />
+                <InfoSection />
+                </main>
         </div>
     );
 }
