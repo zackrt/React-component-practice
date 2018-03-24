@@ -14,27 +14,64 @@ export default class Game extends React.Component {
             feedback:'Make your guess!',
             correctAnswer:Math.round(Math.random() * 100) + 1
         };
-
     }
-    return (
-        <section>
-            <h1>Hot And Cold</h1>
-            <form className="gameform">
-                <h2 className="feedback">Make your Guess!</h2>
-                <input type="number" placeholder ="number" min='1' max='100' required>
-                </input>
-                <button className="Guess">
-                    GUESS
-                </button>
-                <p>
-                    Guess #
-                    <span>
-                        
-                    </span>
-                    !
-                </p>
+    restartGame() {
+        this.setState({
+            guess: [],
+            feedback:'',
+            correctAnswer: Math.floor(Math.random() * 100) + 1
+        });
+    }
 
-            </form>
-        </section>
+    makeGuess(guess) {
+        guess = parseInt(guess, 10);
+        if (isNaN(guess)) {
+            this.setState({ feedback:'Please enter a number'});
+            return;
+        }
+    
+    const difference = Math.abs(guess- this.state.correctAnswer);
+
+    let feedback;
+    if (difference >= 50) {
+        feedback = 'You\'re Very Cold...';
+    } else if (difference >= 30) {
+        feedback = 'You\'re Cold...';
+    }  else if (difference >=1) {
+        feedback = 'You\'re Hot!';
+    } else {
+        feedback = 'You got it!';
+    }
+    
+    this.setState({
+        feedback,
+        guesses: [...this.state.guesses, guess]
+    });
+        
+    document.title = feedback ? `${feedback} | Hot or Cold` : 'Hot and Cold';
+}
+render() {
+    const { feedback, guesses, auralStatus } = this.state;
+    const guessCount = guess.length;
+
+    return (
+        <div>
+            <Header
+                onRestartGame={() => this.restartGame()}
+                onGenerateAuralUpdate={() => this.generateAuralUpdate()}
+            />
+            <main role="main">
+                <GuessSection  
+                    feedback={feedback}
+                    guessCount={guessCount}
+                    onMakeGuess={guess => this.makeGuess(guess)
+                />
+                <StatusSection guesses={guesses}
+                  auralStatus={auralStatus}
+                  />
+                  <InfoSection />
+            </main>
+        </div>
     );
+}
 }
