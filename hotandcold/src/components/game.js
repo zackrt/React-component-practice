@@ -9,9 +9,13 @@ import './game.css'
 export default class Game extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            guesses:[],
+            feedback:'Make your guess!',
+            correctAnswer:Math.round(Math.random() * 100) + 1
+        };
 
     }
-
     return (
         <section>
             <h1>Hot And Cold</h1>
