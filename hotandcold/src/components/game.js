@@ -51,7 +51,7 @@ export default class Game extends React.Component {
     document.title = feedback ? `${feedback} | Hot or Cold` : 'Hot and Cold';
 }
 generateAuralUpdate() {
-    const {guesses, feedback} =this.state;
+    const {guesses, feedback} = this.state;
     const pluralize = guesses.length !== 1;
 
     let auralStatus = `Here's the status of the game: ${feedback} You've made ${guesses.length} ${pluralize ? 'guesses' : 'guess'}.`

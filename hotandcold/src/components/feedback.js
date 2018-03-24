@@ -17,7 +17,7 @@ export default function Feedback(props) {
             aria-live="assertive"
             aria-atomic="true"
         >
-            {props.feedback}
+            {props.feedback} {guessAgain}
         </h2>
 
     );
