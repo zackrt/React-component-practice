@@ -42,7 +42,7 @@ export default class Game extends React.Component {
     }  else if (difference >=1) {
         feedback = 'You\'re Hot!';
     } else {
-        feedback = 'You got it!';
+        feedback = 'You got it! Play again!';
         gameOver = true;
     }
     
