@@ -34,6 +34,7 @@ export default class Game extends React.Component {
     const difference = Math.abs(guess - this.state.correctAnswer);
 
     let feedback;
+    let gameOver = false;
     if (difference >= 50) {
         feedback = 'You\'re Very Cold...';
     } else if (difference >= 30) {
@@ -42,9 +43,11 @@ export default class Game extends React.Component {
         feedback = 'You\'re Hot!';
     } else {
         feedback = 'You got it!';
+        gameOver = true;
     }
     
     this.setState({
+        gameOver,
         feedback,
         guesses: [...this.state.guesses, guess]
     });
@@ -64,7 +67,7 @@ generateAuralUpdate() {
     this.state({auralStatus});
 }
 render() {
-    const { feedback, guesses, auralStatus } = this.state;
+    const { gameOver, feedback, guesses, auralStatus } = this.state;
     const guessCount = guesses.length;
 
     return (
@@ -77,6 +80,7 @@ render() {
                 <GuessSection
                     feedback={feedback}
                     guessCount={guessCount}
+                    gameOver={gameOver}
                     onMakeGuess={guess => this.makeGuess(guess)}
                 />
                     <StatusSection guesses={guesses} 
