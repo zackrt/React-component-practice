@@ -13,9 +13,11 @@ nav ul li {
 nav ul li:first-child {
     float:left;
 }
+
 nav ul li {
     float:right;
 }
+
 nav a {
     color:#fff;
 }
